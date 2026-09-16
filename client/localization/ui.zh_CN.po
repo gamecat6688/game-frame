@@ -1,0 +1,204 @@
+msgid ""
+msgstr ""
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "UI_TITLE"
+msgstr "余烬远征"
+
+msgid "UI_EYEBROW"
+msgstr "旅途 · 第一个黎明"
+
+msgid "UI_GOLD"
+msgstr "金币"
+
+msgid "UI_EXPERIENCE"
+msgstr "经验"
+
+msgid "UI_GO_ONLINE"
+msgstr "切换在线冒险"
+
+msgid "UI_GO_OFFLINE"
+msgstr "切换单机冒险"
+
+msgid "UI_MODE_LOCAL"
+msgstr "单机旅程 · 本地存档"
+
+msgid "UI_MODE_REMOTE"
+msgstr "在线旅程 · 云端存档"
+
+msgid "UI_CHAPTER"
+msgstr "第一章  /  雾境来信"
+
+msgid "UI_TAB_CAMPAIGN"
+msgstr "战役"
+
+msgid "UI_TAB_HEROES"
+msgstr "英雄"
+
+msgid "UI_TAB_FORMATION"
+msgstr "阵容"
+
+msgid "UI_TAB_EQUIPMENT"
+msgstr "装备"
+
+msgid "UI_AUTOBATTLE"
+msgstr "敌方阵线   ·   自动战斗   ·   我方阵线"
+
+msgid "UI_IDLE"
+msgstr "旅途补给"
+
+msgid "UI_IDLE_HINT"
+msgstr "离线持续累积，最多保存 %d 小时"
+
+msgid "UI_CLAIM"
+msgstr "领取"
+
+msgid "UI_BATTLE"
+msgstr "踏入迷雾  ·  开始战斗"
+
+msgid "UI_SKIP"
+msgstr "快进"
+
+msgid "UI_ADVENTURE_HINT"
+msgstr "五位英雄，一段旅程。提升等级与装备，探索迷雾深处。"
+
+msgid "UI_HEROES_TITLE"
+msgstr "同行的旅人"
+
+msgid "UI_HEROES_HINT"
+msgstr "选择英雄，查看技能并提升等级。"
+
+msgid "UI_FORMATION_TITLE"
+msgstr "集结你的队伍"
+
+msgid "UI_FORMATION_HINT"
+msgstr "先选择位置，再选择英雄。已在队伍中的英雄会交换位置。"
+
+msgid "UI_RESERVES"
+msgstr "可用英雄"
+
+msgid "UI_SAVE_FORMATION"
+msgstr "保存阵容"
+
+msgid "UI_EQUIPMENT_TITLE"
+msgstr "远行者的行囊"
+
+msgid "UI_EQUIPMENT_HINT"
+msgstr "先选择英雄，再穿戴装备。每件装备只能由一名英雄持有。"
+
+msgid "UI_EQUIP"
+msgstr "穿戴"
+
+msgid "UI_UNEQUIP"
+msgstr "卸下当前英雄的装备"
+
+msgid "UI_LEVEL_UP"
+msgstr "提升等级"
+
+msgid "UI_LEVEL"
+msgstr "%s  ·  等级 %d"
+
+msgid "UI_HERO_META"
+msgstr "%s  ·  %s  ·  等级 %d"
+
+msgid "UI_STATS"
+msgstr "攻击 %d     生命 %d     防御 %d"
+
+msgid "UI_COST"
+msgstr "升级消耗：%d 金币 / %d 经验"
+
+msgid "UI_EQUIPPED"
+msgstr "装备：%s"
+
+msgid "UI_NO_EQUIPMENT"
+msgstr "未装备"
+
+msgid "UI_REWARDS"
+msgstr "通关奖励  ·  %d 金币 / %d 经验"
+
+msgid "UI_IDLE_AMOUNT"
+msgstr "+%d 金币    +%d 经验"
+
+msgid "UI_SLOT"
+msgstr "位置 %d   ·   %s"
+
+msgid "UI_EQUIP_STATS"
+msgstr "攻击 +%d · 生命 +%d · 需要等级 %d"
+
+msgid "UI_OWNER"
+msgstr "持有者：%s"
+
+msgid "UI_UNASSIGNED"
+msgstr "背包中"
+
+msgid "UI_VICTORY"
+msgstr "胜利！获得 %d 金币、%d 经验。"
+
+msgid "UI_DEFEAT"
+msgstr "暂时受挫。提升英雄等级、调整装备后再试。"
+
+msgid "UI_HIT"
+msgstr "%s → %s  ·  伤害 %d"
+
+msgid "UI_COMPLETE"
+msgstr "迷雾暂歇"
+
+msgid "UI_COMPLETE_HINT"
+msgstr "你已完成原型中的全部六个关卡。新的远征即将开始。"
+
+msgid "UI_READY"
+msgstr "队伍已就绪。"
+
+msgid "UI_SAVED"
+msgstr "已保存。"
+
+msgid "UI_CONNECTING"
+msgstr "正在连接旅程……"
+
+msgid "UI_TABLE_ERROR"
+msgstr "配置读取失败，请重新生成 Excel 数据。"
+
+msgid "ERR_NETWORK_ERROR"
+msgstr "连接失败，请确认服务器已启动；可切回单机继续。"
+
+msgid "ERR_NATIVE_UNAVAILABLE"
+msgstr "本地核心未加载，请先运行构建脚本。"
+
+msgid "ERR_INSUFFICIENT_RESOURCES"
+msgstr "金币或经验不足，试试领取旅途补给。"
+
+msgid "ERR_LEVEL_REQUIRED"
+msgstr "英雄等级不足，先升级再穿戴。"
+
+msgid "ERR_EQUIPMENT_IN_USE"
+msgstr "装备正由其他英雄持有，请先卸下。"
+
+msgid "ERR_NOTHING_TO_CLAIM"
+msgstr "补给还在路上，请稍候再领取。"
+
+msgid "ERR_MAX_LEVEL"
+msgstr "已达到原型等级上限。"
+
+msgid "ERR_STALE_STATE"
+msgstr "状态已更新，请重试本次操作。"
+
+msgid "ERR_SAVE_FAILED"
+msgstr "存档读取或保存失败，操作未确认。"
+
+msgid "ERR_CONFIG_MISMATCH"
+msgstr "客户端与服务器的配置版本不一致。"
+
+msgid "ERR_UNAUTHORIZED"
+msgstr "连接凭证无效，请检查开发配置。"
+
+msgid "ERR_GENERIC"
+msgstr "操作未完成，请刷新旅程后重试。"
+
+msgid "ERR_PROTOCOL_MISMATCH"
+msgstr "客户端与服务器协议版本不同，请更新后重试。"
+
+msgid "ERR_INVALID_RESPONSE"
+msgstr "收到的数据不完整，请重新连接旅程。"

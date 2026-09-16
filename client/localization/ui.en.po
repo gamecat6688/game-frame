@@ -1,0 +1,204 @@
+msgid ""
+msgstr ""
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "UI_TITLE"
+msgstr "Ember Expedition"
+
+msgid "UI_EYEBROW"
+msgstr "A JOURNEY • THE FIRST DAWN"
+
+msgid "UI_GOLD"
+msgstr "Gold"
+
+msgid "UI_EXPERIENCE"
+msgstr "Essence"
+
+msgid "UI_GO_ONLINE"
+msgstr "Play online"
+
+msgid "UI_GO_OFFLINE"
+msgstr "Play offline"
+
+msgid "UI_MODE_LOCAL"
+msgstr "Offline journey · local save"
+
+msgid "UI_MODE_REMOTE"
+msgstr "Online journey · server save"
+
+msgid "UI_CHAPTER"
+msgstr "CHAPTER I  /  LETTERS FROM THE MIST"
+
+msgid "UI_TAB_CAMPAIGN"
+msgstr "Campaign"
+
+msgid "UI_TAB_HEROES"
+msgstr "Heroes"
+
+msgid "UI_TAB_FORMATION"
+msgstr "Formation"
+
+msgid "UI_TAB_EQUIPMENT"
+msgstr "Equipment"
+
+msgid "UI_AUTOBATTLE"
+msgstr "ENEMIES   ·   AUTO BATTLE   ·   YOUR PARTY"
+
+msgid "UI_IDLE"
+msgstr "Journey supplies"
+
+msgid "UI_IDLE_HINT"
+msgstr "Accumulates while away, up to %d hours"
+
+msgid "UI_CLAIM"
+msgstr "Claim"
+
+msgid "UI_BATTLE"
+msgstr "Into the mist · Battle"
+
+msgid "UI_SKIP"
+msgstr "Skip"
+
+msgid "UI_ADVENTURE_HINT"
+msgstr "Five heroes, one journey. Train and equip your party to explore deeper."
+
+msgid "UI_HEROES_TITLE"
+msgstr "Your companions"
+
+msgid "UI_HEROES_HINT"
+msgstr "Select a hero to inspect their skill and train."
+
+msgid "UI_FORMATION_TITLE"
+msgstr "Assemble your party"
+
+msgid "UI_FORMATION_HINT"
+msgstr "Choose a slot, then a hero. Heroes already in your party swap places."
+
+msgid "UI_RESERVES"
+msgstr "Available heroes"
+
+msgid "UI_SAVE_FORMATION"
+msgstr "Save formation"
+
+msgid "UI_EQUIPMENT_TITLE"
+msgstr "The traveller’s pack"
+
+msgid "UI_EQUIPMENT_HINT"
+msgstr "Choose a hero and equip an item. Each item belongs to one hero at a time."
+
+msgid "UI_EQUIP"
+msgstr "Equip"
+
+msgid "UI_UNEQUIP"
+msgstr "Unequip selected hero"
+
+msgid "UI_LEVEL_UP"
+msgstr "Train hero"
+
+msgid "UI_LEVEL"
+msgstr "%s  ·  Lv. %d"
+
+msgid "UI_HERO_META"
+msgstr "%s  ·  %s  ·  Lv. %d"
+
+msgid "UI_STATS"
+msgstr "ATK %d     HP %d     DEF %d"
+
+msgid "UI_COST"
+msgstr "Training cost: %d gold / %d essence"
+
+msgid "UI_EQUIPPED"
+msgstr "Equipment: %s"
+
+msgid "UI_NO_EQUIPMENT"
+msgstr "None"
+
+msgid "UI_REWARDS"
+msgstr "Victory reward · %d gold / %d essence"
+
+msgid "UI_IDLE_AMOUNT"
+msgstr "+%d gold    +%d essence"
+
+msgid "UI_SLOT"
+msgstr "Slot %d   ·   %s"
+
+msgid "UI_EQUIP_STATS"
+msgstr "ATK +%d · HP +%d · Requires Lv. %d"
+
+msgid "UI_OWNER"
+msgstr "Held by: %s"
+
+msgid "UI_UNASSIGNED"
+msgstr "In your pack"
+
+msgid "UI_VICTORY"
+msgstr "Victory! Earned %d gold and %d essence."
+
+msgid "UI_DEFEAT"
+msgstr "Defeated. Train your heroes and improve their equipment, then try again."
+
+msgid "UI_HIT"
+msgstr "%s → %s  ·  %d damage"
+
+msgid "UI_COMPLETE"
+msgstr "The mist recedes"
+
+msgid "UI_COMPLETE_HINT"
+msgstr "All six prototype stages are complete. Another journey awaits."
+
+msgid "UI_READY"
+msgstr "Your party is ready."
+
+msgid "UI_SAVED"
+msgstr "Saved."
+
+msgid "UI_CONNECTING"
+msgstr "Connecting to your journey…"
+
+msgid "UI_TABLE_ERROR"
+msgstr "Configuration could not load. Regenerate the Excel data."
+
+msgid "ERR_NETWORK_ERROR"
+msgstr "Connection failed. Start the server, or switch back to offline."
+
+msgid "ERR_NATIVE_UNAVAILABLE"
+msgstr "Local core unavailable. Run the build script first."
+
+msgid "ERR_INSUFFICIENT_RESOURCES"
+msgstr "Not enough gold or essence. Collect your journey supplies."
+
+msgid "ERR_LEVEL_REQUIRED"
+msgstr "Train this hero to the required level first."
+
+msgid "ERR_EQUIPMENT_IN_USE"
+msgstr "Another hero holds this item. Unequip it first."
+
+msgid "ERR_NOTHING_TO_CLAIM"
+msgstr "Your supplies are on the way. Try again shortly."
+
+msgid "ERR_MAX_LEVEL"
+msgstr "Prototype level cap reached."
+
+msgid "ERR_STALE_STATE"
+msgstr "Your state has changed. Please try again."
+
+msgid "ERR_SAVE_FAILED"
+msgstr "Save could not be read or written. Operation not confirmed."
+
+msgid "ERR_CONFIG_MISMATCH"
+msgstr "Client and server configuration versions differ."
+
+msgid "ERR_UNAUTHORIZED"
+msgstr "Access denied. Check the development connection settings."
+
+msgid "ERR_GENERIC"
+msgstr "The action could not complete. Reconnect and try again."
+
+msgid "ERR_PROTOCOL_MISMATCH"
+msgstr "Client and server protocol versions differ. Please update and reconnect."
+
+msgid "ERR_INVALID_RESPONSE"
+msgstr "The received data is incomplete. Please reconnect to your journey."

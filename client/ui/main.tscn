@@ -1,0 +1,905 @@
+[gd_scene load_steps=9 format=3]
+[ext_resource type="Script" path="res://scripts/bootstrap.gd" id="Boot"]
+[ext_resource type="Script" path="res://ui/adventure_view.gd" id="View"]
+[ext_resource type="Script" path="res://scripts/transport/game_session.gd" id="Session"]
+[ext_resource type="Theme" path="res://ui/theme.tres" id="Theme"]
+[ext_resource type="Texture2D" path="res://assets/mistwood.svg" id="Landscape"]
+[ext_resource type="PackedScene" path="res://ui/components/actor.tscn" id="Actor"]
+[ext_resource type="PackedScene" path="res://ui/components/hero_card.tscn" id="Hero"]
+[ext_resource type="Texture2D" path="res://assets/hero_1.svg" id="Portrait"]
+[node name="EmberExpedition" type="Node"]
+script=ExtResource("Boot")
+[node name="Session" type="Node" parent="."]
+script=ExtResource("Session")
+[node name="View" type="Control" parent="."]
+layout_mode=3
+anchors_preset=15
+anchor_right=1.0
+anchor_bottom=1.0
+grow_horizontal=2
+grow_vertical=2
+theme=ExtResource("Theme")
+script=ExtResource("View")
+
+[node name="Margin" type="MarginContainer" parent="View"]
+layout_mode=2
+anchors_preset=15
+anchor_right=1.0
+anchor_bottom=1.0
+offset_left=24.0
+offset_top=22.0
+offset_right=-24.0
+offset_bottom=-18.0
+
+[node name="Main" type="VBoxContainer" parent="View/Margin"]
+layout_mode=2
+theme_override_constants/separation=14
+
+[node name="Header" type="HBoxContainer" parent="View/Margin/Main"]
+layout_mode=2
+
+
+[node name="Brand" type="VBoxContainer" parent="View/Margin/Main/Header"]
+layout_mode=2
+size_flags_horizontal=3
+theme_override_constants/separation=0
+
+[node name="Eyebrow" type="Label" parent="View/Margin/Main/Header/Brand"]
+unique_name_in_owner=true
+layout_mode=2
+text="UI_EYEBROW"
+theme_override_font_sizes/font_size=13
+theme_override_colors/font_color=Color(0.67,0.7,0.61,1)
+
+[node name="Title" type="Label" parent="View/Margin/Main/Header/Brand"]
+unique_name_in_owner=true
+layout_mode=2
+text="UI_TITLE"
+theme_override_font_sizes/font_size=32
+theme_override_colors/font_color=Color(0.9,0.8,0.59,1)
+
+[node name="Locale" type="OptionButton" parent="View/Margin/Main/Header"]
+layout_mode=2
+unique_name_in_owner=true
+custom_minimum_size=Vector2(136,42)
+size_flags_vertical=4
+item_count=3
+selected=0
+popup/item_0/text="简体中文"
+popup/item_0/id=0
+popup/item_1/text="繁體中文"
+popup/item_1/id=1
+popup/item_2/text="English"
+popup/item_2/id=2
+auto_translate_mode=2
+
+[node name="Topline" type="HBoxContainer" parent="View/Margin/Main"]
+layout_mode=2
+
+
+[node name="ModeLabel" type="Label" parent="View/Margin/Main/Topline"]
+unique_name_in_owner=true
+layout_mode=2
+text=""
+theme_override_font_sizes/font_size=16
+auto_translate_mode=2
+size_flags_horizontal=3
+
+[node name="ModeSwitch" type="Button" parent="View/Margin/Main/Topline"]
+unique_name_in_owner=true
+layout_mode=2
+text="UI_GO_ONLINE"
+custom_minimum_size=Vector2(0,48)
+custom_minimum_size=Vector2(180,40)
+theme_override_font_sizes/font_size=16
+
+[node name="Currencies" type="PanelContainer" parent="View/Margin/Main"]
+layout_mode=2
+
+
+[node name="Row" type="HBoxContainer" parent="View/Margin/Main/Currencies"]
+layout_mode=2
+
+
+[node name="GoldLabel" type="Label" parent="View/Margin/Main/Currencies/Row"]
+unique_name_in_owner=true
+layout_mode=2
+text="UI_GOLD"
+theme_override_font_sizes/font_size=17
+theme_override_colors/font_color=Color(0.85,0.72,0.43,1)
+
+[node name="Gold" type="Label" parent="View/Margin/Main/Currencies/Row"]
+unique_name_in_owner=true
+layout_mode=2
+text="—"
+theme_override_font_sizes/font_size=24
+auto_translate_mode=2
+size_flags_horizontal=3
+
+[node name="XPLabel" type="Label" parent="View/Margin/Main/Currencies/Row"]
+unique_name_in_owner=true
+layout_mode=2
+text="UI_EXPERIENCE"
+theme_override_font_sizes/font_size=17
+theme_override_colors/font_color=Color(0.62,0.77,0.69,1)
+
+[node name="XP" type="Label" parent="View/Margin/Main/Currencies/Row"]
+unique_name_in_owner=true
+layout_mode=2
+text="—"
+theme_override_font_sizes/font_size=24
+auto_translate_mode=2
+size_flags_horizontal=3
+
+[node name="Pages" type="Control" parent="View/Margin/Main"]
+unique_name_in_owner=true
+layout_mode=2
+size_flags_vertical=3
+custom_minimum_size=Vector2(0,690)
+
+[node name="Campaign" type="VBoxContainer" parent="View/Margin/Main/Pages"]
+unique_name_in_owner=true
+layout_mode=2
+layout_mode=1
+anchors_preset=15
+anchor_right=1.0
+anchor_bottom=1.0
+grow_horizontal=2
+grow_vertical=2
+
+[node name="Story" type="Control" parent="View/Margin/Main/Pages/Campaign"]
+layout_mode=2
+custom_minimum_size=Vector2(0,202)
+clip_contents=true
+
+[node name="Landscape" type="TextureRect" parent="View/Margin/Main/Pages/Campaign/Story"]
+layout_mode=2
+layout_mode=1
+anchors_preset=15
+anchor_right=1.0
+anchor_bottom=1.0
+grow_horizontal=2
+grow_vertical=2
+texture=ExtResource("Landscape")
+expand_mode=1
+stretch_mode=6
+
+[node name="Inset" type="MarginContainer" parent="View/Margin/Main/Pages/Campaign/Story"]
+layout_mode=2
+layout_mode=1
+anchors_preset=15
+anchor_right=1.0
+anchor_bottom=1.0
+grow_horizontal=2
+grow_vertical=2
+theme_override_constants/margin_left=22
+theme_override_constants/margin_top=20
+theme_override_constants/margin_right=22
+
+[node name="Text" type="VBoxContainer" parent="View/Margin/Main/Pages/Campaign/Story/Inset"]
+layout_mode=2
+theme_override_constants/separation=8
+
+[node name="Chapter" type="Label" parent="View/Margin/Main/Pages/Campaign/Story/Inset/Text"]
+unique_name_in_owner=true
+layout_mode=2
+text="UI_CHAPTER"
+theme_override_font_sizes/font_size=15
+theme_override_colors/font_color=Color(0.82,0.75,0.53,1)
+
+[node name="StageTitle" type="Label" parent="View/Margin/Main/Pages/Campaign/Story/Inset/Text"]
+unique_name_in_owner=true
+layout_mode=2
+text=""
+theme_override_font_sizes/font_size=32
+auto_translate_mode=2
+
+
+[node name="StageDescription" type="Label" parent="View/Margin/Main/Pages/Campaign/Story/Inset/Text"]
+unique_name_in_owner=true
+layout_mode=2
+text=""
+theme_override_font_sizes/font_size=17
+auto_translate_mode=2
+custom_minimum_size=Vector2(0,50)
+autowrap_mode=2
+
+[node name="StageReward" type="Label" parent="View/Margin/Main/Pages/Campaign/Story/Inset/Text"]
+unique_name_in_owner=true
+layout_mode=2
+text=""
+theme_override_font_sizes/font_size=18
+auto_translate_mode=2
+theme_override_colors/font_color=Color(0.86,0.76,0.52,1)
+
+[node name="Encounter" type="PanelContainer" parent="View/Margin/Main/Pages/Campaign"]
+layout_mode=2
+
+
+[node name="Box" type="VBoxContainer" parent="View/Margin/Main/Pages/Campaign/Encounter"]
+layout_mode=2
+theme_override_constants/separation=7
+
+[node name="Enemies" type="HBoxContainer" parent="View/Margin/Main/Pages/Campaign/Encounter/Box"]
+layout_mode=2
+
+
+[node name="Enemy0" parent="View/Margin/Main/Pages/Campaign/Encounter/Box/Enemies" instance=ExtResource("Actor")]
+unique_name_in_owner=true
+layout_mode=2
+
+
+[node name="Enemy1" parent="View/Margin/Main/Pages/Campaign/Encounter/Box/Enemies" instance=ExtResource("Actor")]
+unique_name_in_owner=true
+layout_mode=2
+
+
+[node name="Enemy2" parent="View/Margin/Main/Pages/Campaign/Encounter/Box/Enemies" instance=ExtResource("Actor")]
+unique_name_in_owner=true
+layout_mode=2
+
+
+[node name="Enemy3" parent="View/Margin/Main/Pages/Campaign/Encounter/Box/Enemies" instance=ExtResource("Actor")]
+unique_name_in_owner=true
+layout_mode=2
+
+
+[node name="Enemy4" parent="View/Margin/Main/Pages/Campaign/Encounter/Box/Enemies" instance=ExtResource("Actor")]
+unique_name_in_owner=true
+layout_mode=2
+
+
+[node name="BattleCaption" type="Label" parent="View/Margin/Main/Pages/Campaign/Encounter/Box"]
+unique_name_in_owner=true
+layout_mode=2
+text="UI_AUTOBATTLE"
+theme_override_font_sizes/font_size=15
+horizontal_alignment=1
+theme_override_colors/font_color=Color(0.63,0.7,0.64,1)
+
+[node name="Allies" type="HBoxContainer" parent="View/Margin/Main/Pages/Campaign/Encounter/Box"]
+layout_mode=2
+
+
+[node name="Ally0" parent="View/Margin/Main/Pages/Campaign/Encounter/Box/Allies" instance=ExtResource("Actor")]
+unique_name_in_owner=true
+layout_mode=2
+
+
+[node name="Ally1" parent="View/Margin/Main/Pages/Campaign/Encounter/Box/Allies" instance=ExtResource("Actor")]
+unique_name_in_owner=true
+layout_mode=2
+
+
+[node name="Ally2" parent="View/Margin/Main/Pages/Campaign/Encounter/Box/Allies" instance=ExtResource("Actor")]
+unique_name_in_owner=true
+layout_mode=2
+
+
+[node name="Ally3" parent="View/Margin/Main/Pages/Campaign/Encounter/Box/Allies" instance=ExtResource("Actor")]
+unique_name_in_owner=true
+layout_mode=2
+
+
+[node name="Ally4" parent="View/Margin/Main/Pages/Campaign/Encounter/Box/Allies" instance=ExtResource("Actor")]
+unique_name_in_owner=true
+layout_mode=2
+
+
+[node name="Idle" type="PanelContainer" parent="View/Margin/Main/Pages/Campaign"]
+layout_mode=2
+
+
+[node name="Row" type="HBoxContainer" parent="View/Margin/Main/Pages/Campaign/Idle"]
+layout_mode=2
+
+
+[node name="Words" type="VBoxContainer" parent="View/Margin/Main/Pages/Campaign/Idle/Row"]
+layout_mode=2
+size_flags_horizontal=3
+theme_override_constants/separation=2
+
+[node name="IdleTitle" type="Label" parent="View/Margin/Main/Pages/Campaign/Idle/Row/Words"]
+unique_name_in_owner=true
+layout_mode=2
+text="UI_IDLE"
+theme_override_font_sizes/font_size=19
+
+
+[node name="IdleAmount" type="Label" parent="View/Margin/Main/Pages/Campaign/Idle/Row/Words"]
+unique_name_in_owner=true
+layout_mode=2
+text=""
+theme_override_font_sizes/font_size=17
+auto_translate_mode=2
+
+
+[node name="IdleHint" type="Label" parent="View/Margin/Main/Pages/Campaign/Idle/Row/Words"]
+unique_name_in_owner=true
+layout_mode=2
+text="UI_IDLE_HINT"
+theme_override_font_sizes/font_size=13
+theme_override_colors/font_color=Color(0.62,0.71,0.67,1)
+
+[node name="Claim" type="Button" parent="View/Margin/Main/Pages/Campaign/Idle/Row"]
+unique_name_in_owner=true
+layout_mode=2
+text="UI_CLAIM"
+custom_minimum_size=Vector2(0,48)
+custom_minimum_size=Vector2(100,50)
+size_flags_vertical=4
+
+[node name="Actions" type="HBoxContainer" parent="View/Margin/Main/Pages/Campaign"]
+layout_mode=2
+
+
+[node name="Battle" type="Button" parent="View/Margin/Main/Pages/Campaign/Actions"]
+unique_name_in_owner=true
+layout_mode=2
+text="UI_BATTLE"
+custom_minimum_size=Vector2(0,48)
+size_flags_horizontal=3
+custom_minimum_size=Vector2(0,54)
+
+[node name="Skip" type="Button" parent="View/Margin/Main/Pages/Campaign/Actions"]
+unique_name_in_owner=true
+layout_mode=2
+text="UI_SKIP"
+custom_minimum_size=Vector2(0,48)
+visible=false
+custom_minimum_size=Vector2(120,54)
+
+[node name="BattleLog" type="Label" parent="View/Margin/Main/Pages/Campaign"]
+unique_name_in_owner=true
+layout_mode=2
+text="UI_ADVENTURE_HINT"
+theme_override_font_sizes/font_size=15
+auto_translate_mode=2
+autowrap_mode=2
+custom_minimum_size=Vector2(0,48)
+
+[node name="Heroes" type="VBoxContainer" parent="View/Margin/Main/Pages"]
+unique_name_in_owner=true
+layout_mode=2
+layout_mode=1
+anchors_preset=15
+anchor_right=1.0
+anchor_bottom=1.0
+grow_horizontal=2
+grow_vertical=2
+visible=false
+
+[node name="HeroesTitle" type="Label" parent="View/Margin/Main/Pages/Heroes"]
+unique_name_in_owner=true
+layout_mode=2
+text="UI_HEROES_TITLE"
+theme_override_font_sizes/font_size=27
+
+
+[node name="HeroesHint" type="Label" parent="View/Margin/Main/Pages/Heroes"]
+unique_name_in_owner=true
+layout_mode=2
+text="UI_HEROES_HINT"
+theme_override_font_sizes/font_size=16
+
+
+[node name="HeroGrid" type="GridContainer" parent="View/Margin/Main/Pages/Heroes"]
+layout_mode=2
+columns=3
+
+[node name="Hero1" parent="View/Margin/Main/Pages/Heroes/HeroGrid" instance=ExtResource("Hero")]
+unique_name_in_owner=true
+layout_mode=2
+
+
+[node name="Hero2" parent="View/Margin/Main/Pages/Heroes/HeroGrid" instance=ExtResource("Hero")]
+unique_name_in_owner=true
+layout_mode=2
+
+
+[node name="Hero3" parent="View/Margin/Main/Pages/Heroes/HeroGrid" instance=ExtResource("Hero")]
+unique_name_in_owner=true
+layout_mode=2
+
+
+[node name="Hero4" parent="View/Margin/Main/Pages/Heroes/HeroGrid" instance=ExtResource("Hero")]
+unique_name_in_owner=true
+layout_mode=2
+
+
+[node name="Hero5" parent="View/Margin/Main/Pages/Heroes/HeroGrid" instance=ExtResource("Hero")]
+unique_name_in_owner=true
+layout_mode=2
+
+
+[node name="Hero6" parent="View/Margin/Main/Pages/Heroes/HeroGrid" instance=ExtResource("Hero")]
+unique_name_in_owner=true
+layout_mode=2
+
+
+[node name="Detail" type="PanelContainer" parent="View/Margin/Main/Pages/Heroes"]
+layout_mode=2
+
+
+[node name="Box" type="VBoxContainer" parent="View/Margin/Main/Pages/Heroes/Detail"]
+layout_mode=2
+theme_override_constants/separation=9
+
+[node name="HeroName" type="Label" parent="View/Margin/Main/Pages/Heroes/Detail/Box"]
+unique_name_in_owner=true
+layout_mode=2
+text=""
+theme_override_font_sizes/font_size=26
+auto_translate_mode=2
+theme_override_colors/font_color=Color(0.89,0.78,0.56,1)
+
+[node name="HeroDescription" type="Label" parent="View/Margin/Main/Pages/Heroes/Detail/Box"]
+unique_name_in_owner=true
+layout_mode=2
+text=""
+theme_override_font_sizes/font_size=17
+auto_translate_mode=2
+autowrap_mode=2
+
+[node name="HeroStats" type="Label" parent="View/Margin/Main/Pages/Heroes/Detail/Box"]
+unique_name_in_owner=true
+layout_mode=2
+text=""
+theme_override_font_sizes/font_size=20
+auto_translate_mode=2
+
+
+[node name="HeroSkill" type="Label" parent="View/Margin/Main/Pages/Heroes/Detail/Box"]
+unique_name_in_owner=true
+layout_mode=2
+text=""
+theme_override_font_sizes/font_size=17
+auto_translate_mode=2
+autowrap_mode=2
+
+[node name="HeroEquipment" type="Label" parent="View/Margin/Main/Pages/Heroes/Detail/Box"]
+unique_name_in_owner=true
+layout_mode=2
+text=""
+theme_override_font_sizes/font_size=17
+auto_translate_mode=2
+autowrap_mode=2
+
+[node name="LevelCost" type="Label" parent="View/Margin/Main/Pages/Heroes/Detail/Box"]
+unique_name_in_owner=true
+layout_mode=2
+text=""
+theme_override_font_sizes/font_size=16
+auto_translate_mode=2
+theme_override_colors/font_color=Color(0.72,0.75,0.66,1)
+
+[node name="LevelUp" type="Button" parent="View/Margin/Main/Pages/Heroes/Detail/Box"]
+unique_name_in_owner=true
+layout_mode=2
+text="UI_LEVEL_UP"
+custom_minimum_size=Vector2(0,48)
+
+
+[node name="Formation" type="VBoxContainer" parent="View/Margin/Main/Pages"]
+unique_name_in_owner=true
+layout_mode=2
+layout_mode=1
+anchors_preset=15
+anchor_right=1.0
+anchor_bottom=1.0
+grow_horizontal=2
+grow_vertical=2
+visible=false
+
+[node name="FormationTitle" type="Label" parent="View/Margin/Main/Pages/Formation"]
+unique_name_in_owner=true
+layout_mode=2
+text="UI_FORMATION_TITLE"
+theme_override_font_sizes/font_size=27
+
+
+[node name="FormationHint" type="Label" parent="View/Margin/Main/Pages/Formation"]
+unique_name_in_owner=true
+layout_mode=2
+text="UI_FORMATION_HINT"
+theme_override_font_sizes/font_size=17
+autowrap_mode=2
+
+[node name="Slots" type="VBoxContainer" parent="View/Margin/Main/Pages/Formation"]
+layout_mode=2
+
+
+[node name="Slot0" type="Button" parent="View/Margin/Main/Pages/Formation/Slots"]
+unique_name_in_owner=true
+layout_mode=2
+text=""
+custom_minimum_size=Vector2(0,48)
+custom_minimum_size=Vector2(0,59)
+toggle_mode=true
+auto_translate_mode=2
+
+[node name="Slot1" type="Button" parent="View/Margin/Main/Pages/Formation/Slots"]
+unique_name_in_owner=true
+layout_mode=2
+text=""
+custom_minimum_size=Vector2(0,48)
+custom_minimum_size=Vector2(0,59)
+toggle_mode=true
+auto_translate_mode=2
+
+[node name="Slot2" type="Button" parent="View/Margin/Main/Pages/Formation/Slots"]
+unique_name_in_owner=true
+layout_mode=2
+text=""
+custom_minimum_size=Vector2(0,48)
+custom_minimum_size=Vector2(0,59)
+toggle_mode=true
+auto_translate_mode=2
+
+[node name="Slot3" type="Button" parent="View/Margin/Main/Pages/Formation/Slots"]
+unique_name_in_owner=true
+layout_mode=2
+text=""
+custom_minimum_size=Vector2(0,48)
+custom_minimum_size=Vector2(0,59)
+toggle_mode=true
+auto_translate_mode=2
+
+[node name="Slot4" type="Button" parent="View/Margin/Main/Pages/Formation/Slots"]
+unique_name_in_owner=true
+layout_mode=2
+text=""
+custom_minimum_size=Vector2(0,48)
+custom_minimum_size=Vector2(0,59)
+toggle_mode=true
+auto_translate_mode=2
+
+[node name="ReserveTitle" type="Label" parent="View/Margin/Main/Pages/Formation"]
+unique_name_in_owner=true
+layout_mode=2
+text="UI_RESERVES"
+theme_override_font_sizes/font_size=20
+
+
+[node name="ReserveGrid" type="GridContainer" parent="View/Margin/Main/Pages/Formation"]
+layout_mode=2
+columns=3
+
+[node name="Reserve1" type="Button" parent="View/Margin/Main/Pages/Formation/ReserveGrid"]
+unique_name_in_owner=true
+layout_mode=2
+text=""
+custom_minimum_size=Vector2(0,48)
+size_flags_horizontal=3
+auto_translate_mode=2
+
+[node name="Reserve2" type="Button" parent="View/Margin/Main/Pages/Formation/ReserveGrid"]
+unique_name_in_owner=true
+layout_mode=2
+text=""
+custom_minimum_size=Vector2(0,48)
+size_flags_horizontal=3
+auto_translate_mode=2
+
+[node name="Reserve3" type="Button" parent="View/Margin/Main/Pages/Formation/ReserveGrid"]
+unique_name_in_owner=true
+layout_mode=2
+text=""
+custom_minimum_size=Vector2(0,48)
+size_flags_horizontal=3
+auto_translate_mode=2
+
+[node name="Reserve4" type="Button" parent="View/Margin/Main/Pages/Formation/ReserveGrid"]
+unique_name_in_owner=true
+layout_mode=2
+text=""
+custom_minimum_size=Vector2(0,48)
+size_flags_horizontal=3
+auto_translate_mode=2
+
+[node name="Reserve5" type="Button" parent="View/Margin/Main/Pages/Formation/ReserveGrid"]
+unique_name_in_owner=true
+layout_mode=2
+text=""
+custom_minimum_size=Vector2(0,48)
+size_flags_horizontal=3
+auto_translate_mode=2
+
+[node name="Reserve6" type="Button" parent="View/Margin/Main/Pages/Formation/ReserveGrid"]
+unique_name_in_owner=true
+layout_mode=2
+text=""
+custom_minimum_size=Vector2(0,48)
+size_flags_horizontal=3
+auto_translate_mode=2
+
+[node name="SaveFormation" type="Button" parent="View/Margin/Main/Pages/Formation"]
+unique_name_in_owner=true
+layout_mode=2
+text="UI_SAVE_FORMATION"
+custom_minimum_size=Vector2(0,48)
+custom_minimum_size=Vector2(0,54)
+
+[node name="Equipment" type="VBoxContainer" parent="View/Margin/Main/Pages"]
+unique_name_in_owner=true
+layout_mode=2
+layout_mode=1
+anchors_preset=15
+anchor_right=1.0
+anchor_bottom=1.0
+grow_horizontal=2
+grow_vertical=2
+visible=false
+
+[node name="EquipmentTitle" type="Label" parent="View/Margin/Main/Pages/Equipment"]
+unique_name_in_owner=true
+layout_mode=2
+text="UI_EQUIPMENT_TITLE"
+theme_override_font_sizes/font_size=27
+
+
+[node name="EquipmentHint" type="Label" parent="View/Margin/Main/Pages/Equipment"]
+unique_name_in_owner=true
+layout_mode=2
+text="UI_EQUIPMENT_HINT"
+theme_override_font_sizes/font_size=16
+autowrap_mode=2
+
+[node name="HeroPicker" type="HBoxContainer" parent="View/Margin/Main/Pages/Equipment"]
+layout_mode=2
+
+
+[node name="EquipHero1" type="Button" parent="View/Margin/Main/Pages/Equipment/HeroPicker"]
+unique_name_in_owner=true
+layout_mode=2
+text=""
+custom_minimum_size=Vector2(0,48)
+size_flags_horizontal=3
+theme_override_font_sizes/font_size=17
+auto_translate_mode=2
+toggle_mode=true
+
+[node name="EquipHero2" type="Button" parent="View/Margin/Main/Pages/Equipment/HeroPicker"]
+unique_name_in_owner=true
+layout_mode=2
+text=""
+custom_minimum_size=Vector2(0,48)
+size_flags_horizontal=3
+theme_override_font_sizes/font_size=17
+auto_translate_mode=2
+toggle_mode=true
+
+[node name="EquipHero3" type="Button" parent="View/Margin/Main/Pages/Equipment/HeroPicker"]
+unique_name_in_owner=true
+layout_mode=2
+text=""
+custom_minimum_size=Vector2(0,48)
+size_flags_horizontal=3
+theme_override_font_sizes/font_size=17
+auto_translate_mode=2
+toggle_mode=true
+
+[node name="EquipHero4" type="Button" parent="View/Margin/Main/Pages/Equipment/HeroPicker"]
+unique_name_in_owner=true
+layout_mode=2
+text=""
+custom_minimum_size=Vector2(0,48)
+size_flags_horizontal=3
+theme_override_font_sizes/font_size=17
+auto_translate_mode=2
+toggle_mode=true
+
+[node name="EquipHero5" type="Button" parent="View/Margin/Main/Pages/Equipment/HeroPicker"]
+unique_name_in_owner=true
+layout_mode=2
+text=""
+custom_minimum_size=Vector2(0,48)
+size_flags_horizontal=3
+theme_override_font_sizes/font_size=17
+auto_translate_mode=2
+toggle_mode=true
+
+[node name="EquipHero6" type="Button" parent="View/Margin/Main/Pages/Equipment/HeroPicker"]
+unique_name_in_owner=true
+layout_mode=2
+text=""
+custom_minimum_size=Vector2(0,48)
+size_flags_horizontal=3
+theme_override_font_sizes/font_size=17
+auto_translate_mode=2
+toggle_mode=true
+
+[node name="EquipTarget" type="Label" parent="View/Margin/Main/Pages/Equipment"]
+unique_name_in_owner=true
+layout_mode=2
+text=""
+theme_override_font_sizes/font_size=20
+auto_translate_mode=2
+
+
+[node name="Equipment101" type="PanelContainer" parent="View/Margin/Main/Pages/Equipment"]
+layout_mode=2
+
+
+[node name="Box" type="VBoxContainer" parent="View/Margin/Main/Pages/Equipment/Equipment101"]
+layout_mode=2
+theme_override_constants/separation=5
+
+[node name="EquipmentName101" type="Label" parent="View/Margin/Main/Pages/Equipment/Equipment101/Box"]
+unique_name_in_owner=true
+layout_mode=2
+text=""
+theme_override_font_sizes/font_size=23
+auto_translate_mode=2
+theme_override_colors/font_color=Color(0.88,0.77,0.54,1)
+
+[node name="EquipmentDescription101" type="Label" parent="View/Margin/Main/Pages/Equipment/Equipment101/Box"]
+unique_name_in_owner=true
+layout_mode=2
+text=""
+theme_override_font_sizes/font_size=16
+auto_translate_mode=2
+autowrap_mode=2
+
+[node name="Row" type="HBoxContainer" parent="View/Margin/Main/Pages/Equipment/Equipment101/Box"]
+layout_mode=2
+
+
+[node name="EquipmentStats101" type="Label" parent="View/Margin/Main/Pages/Equipment/Equipment101/Box/Row"]
+unique_name_in_owner=true
+layout_mode=2
+text=""
+theme_override_font_sizes/font_size=16
+auto_translate_mode=2
+size_flags_horizontal=3
+
+[node name="Equip101" type="Button" parent="View/Margin/Main/Pages/Equipment/Equipment101/Box/Row"]
+unique_name_in_owner=true
+layout_mode=2
+text="UI_EQUIP"
+custom_minimum_size=Vector2(0,48)
+custom_minimum_size=Vector2(105,40)
+
+[node name="Equipment102" type="PanelContainer" parent="View/Margin/Main/Pages/Equipment"]
+layout_mode=2
+
+
+[node name="Box" type="VBoxContainer" parent="View/Margin/Main/Pages/Equipment/Equipment102"]
+layout_mode=2
+theme_override_constants/separation=5
+
+[node name="EquipmentName102" type="Label" parent="View/Margin/Main/Pages/Equipment/Equipment102/Box"]
+unique_name_in_owner=true
+layout_mode=2
+text=""
+theme_override_font_sizes/font_size=23
+auto_translate_mode=2
+theme_override_colors/font_color=Color(0.88,0.77,0.54,1)
+
+[node name="EquipmentDescription102" type="Label" parent="View/Margin/Main/Pages/Equipment/Equipment102/Box"]
+unique_name_in_owner=true
+layout_mode=2
+text=""
+theme_override_font_sizes/font_size=16
+auto_translate_mode=2
+autowrap_mode=2
+
+[node name="Row" type="HBoxContainer" parent="View/Margin/Main/Pages/Equipment/Equipment102/Box"]
+layout_mode=2
+
+
+[node name="EquipmentStats102" type="Label" parent="View/Margin/Main/Pages/Equipment/Equipment102/Box/Row"]
+unique_name_in_owner=true
+layout_mode=2
+text=""
+theme_override_font_sizes/font_size=16
+auto_translate_mode=2
+size_flags_horizontal=3
+
+[node name="Equip102" type="Button" parent="View/Margin/Main/Pages/Equipment/Equipment102/Box/Row"]
+unique_name_in_owner=true
+layout_mode=2
+text="UI_EQUIP"
+custom_minimum_size=Vector2(0,48)
+custom_minimum_size=Vector2(105,40)
+
+[node name="Equipment103" type="PanelContainer" parent="View/Margin/Main/Pages/Equipment"]
+layout_mode=2
+
+
+[node name="Box" type="VBoxContainer" parent="View/Margin/Main/Pages/Equipment/Equipment103"]
+layout_mode=2
+theme_override_constants/separation=5
+
+[node name="EquipmentName103" type="Label" parent="View/Margin/Main/Pages/Equipment/Equipment103/Box"]
+unique_name_in_owner=true
+layout_mode=2
+text=""
+theme_override_font_sizes/font_size=23
+auto_translate_mode=2
+theme_override_colors/font_color=Color(0.88,0.77,0.54,1)
+
+[node name="EquipmentDescription103" type="Label" parent="View/Margin/Main/Pages/Equipment/Equipment103/Box"]
+unique_name_in_owner=true
+layout_mode=2
+text=""
+theme_override_font_sizes/font_size=16
+auto_translate_mode=2
+autowrap_mode=2
+
+[node name="Row" type="HBoxContainer" parent="View/Margin/Main/Pages/Equipment/Equipment103/Box"]
+layout_mode=2
+
+
+[node name="EquipmentStats103" type="Label" parent="View/Margin/Main/Pages/Equipment/Equipment103/Box/Row"]
+unique_name_in_owner=true
+layout_mode=2
+text=""
+theme_override_font_sizes/font_size=16
+auto_translate_mode=2
+size_flags_horizontal=3
+
+[node name="Equip103" type="Button" parent="View/Margin/Main/Pages/Equipment/Equipment103/Box/Row"]
+unique_name_in_owner=true
+layout_mode=2
+text="UI_EQUIP"
+custom_minimum_size=Vector2(0,48)
+custom_minimum_size=Vector2(105,40)
+
+[node name="Unequip" type="Button" parent="View/Margin/Main/Pages/Equipment"]
+unique_name_in_owner=true
+layout_mode=2
+text="UI_UNEQUIP"
+custom_minimum_size=Vector2(0,48)
+
+
+[node name="Status" type="Label" parent="View/Margin/Main"]
+unique_name_in_owner=true
+layout_mode=2
+text=""
+custom_minimum_size=Vector2(0,44)
+theme_override_font_sizes/font_size=16
+autowrap_mode=2
+auto_translate_mode=2
+theme_override_colors/font_color=Color(0.83,0.72,0.51,1)
+
+[node name="Tabs" type="HBoxContainer" parent="View/Margin/Main"]
+layout_mode=2
+
+
+[node name="Tab0" type="Button" parent="View/Margin/Main/Tabs"]
+unique_name_in_owner=true
+layout_mode=2
+text="UI_TAB_CAMPAIGN"
+custom_minimum_size=Vector2(0,48)
+size_flags_horizontal=3
+toggle_mode=true
+custom_minimum_size=Vector2(0,60)
+button_pressed=true
+
+[node name="Tab1" type="Button" parent="View/Margin/Main/Tabs"]
+unique_name_in_owner=true
+layout_mode=2
+text="UI_TAB_HEROES"
+custom_minimum_size=Vector2(0,48)
+size_flags_horizontal=3
+toggle_mode=true
+custom_minimum_size=Vector2(0,60)
+
+[node name="Tab2" type="Button" parent="View/Margin/Main/Tabs"]
+unique_name_in_owner=true
+layout_mode=2
+text="UI_TAB_FORMATION"
+custom_minimum_size=Vector2(0,48)
+size_flags_horizontal=3
+toggle_mode=true
+custom_minimum_size=Vector2(0,60)
+
+[node name="Tab3" type="Button" parent="View/Margin/Main/Tabs"]
+unique_name_in_owner=true
+layout_mode=2
+text="UI_TAB_EQUIPMENT"
+custom_minimum_size=Vector2(0,48)
+size_flags_horizontal=3
+toggle_mode=true
+custom_minimum_size=Vector2(0,60)

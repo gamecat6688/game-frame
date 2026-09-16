@@ -1,0 +1,80 @@
+[gd_resource type="Theme" load_steps=9 format=3]
+
+[sub_resource type="SystemFont" id="Font"]
+font_names = PackedStringArray("Microsoft YaHei", "Noto Sans CJK SC", "sans-serif")
+[sub_resource type="StyleBoxFlat" id="Panel"]
+bg_color = Color(0.09, 0.145, 0.16, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.29, 0.36, 0.34, 0.6)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_left = 14
+corner_radius_bottom_right = 14
+content_margin_left = 16.0
+content_margin_right = 16.0
+content_margin_top = 14.0
+content_margin_bottom = 14.0
+[sub_resource type="StyleBoxFlat" id="Button"]
+bg_color = Color(0.15, 0.22, 0.23, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_left = 8
+corner_radius_bottom_right = 8
+content_margin_left = 12.0
+content_margin_right = 12.0
+content_margin_top = 8.0
+content_margin_bottom = 8.0
+[sub_resource type="StyleBoxFlat" id="Hover"]
+bg_color = Color(0.26, 0.34, 0.32, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_left = 8
+corner_radius_bottom_right = 8
+[sub_resource type="StyleBoxFlat" id="Pressed"]
+bg_color = Color(0.46, 0.37, 0.23, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_left = 8
+corner_radius_bottom_right = 8
+[sub_resource type="StyleBoxFlat" id="Disabled"]
+bg_color = Color(0.105, 0.15, 0.165, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_left = 8
+corner_radius_bottom_right = 8
+[sub_resource type="StyleBoxFlat" id="BarBG"]
+bg_color = Color(0.05, 0.08, 0.095, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_left = 4
+corner_radius_bottom_right = 4
+[sub_resource type="StyleBoxFlat" id="Bar"]
+bg_color = Color(0.52, 0.7, 0.56, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_left = 4
+corner_radius_bottom_right = 4
+[resource]
+default_font = SubResource("Font")
+default_font_size = 20
+Label/colors/font_color = Color(0.9, 0.9, 0.81, 1)
+Button/colors/font_color = Color(0.89, 0.87, 0.74, 1)
+Button/colors/font_disabled_color = Color(0.4, 0.46, 0.44, 1)
+Button/styles/normal = SubResource("Button")
+Button/styles/hover = SubResource("Hover")
+Button/styles/pressed = SubResource("Pressed")
+Button/styles/focus = SubResource("Hover")
+Button/styles/disabled = SubResource("Disabled")
+OptionButton/styles/normal = SubResource("Button")
+OptionButton/styles/hover = SubResource("Hover")
+OptionButton/styles/pressed = SubResource("Pressed")
+PanelContainer/styles/panel = SubResource("Panel")
+ProgressBar/styles/background = SubResource("BarBG")
+ProgressBar/styles/fill = SubResource("Bar")
+VBoxContainer/constants/separation = 12
+HBoxContainer/constants/separation = 10
+GridContainer/constants/h_separation = 12
+GridContainer/constants/v_separation = 12
