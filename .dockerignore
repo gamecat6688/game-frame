@@ -1,0 +1,9 @@
+**
+!Dockerfile
+!game/
+!game/**
+game/**/*.exe
+game/**/*.dll
+game/**/*.so
+game/**/*.log
+game/**/runtime/
