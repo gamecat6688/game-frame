@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package gameframe.persistence;
+
+option go_package = "gameframe/internal/persistence";
+
+message CampaignDbo {
+  int32 stage = 1;
+}

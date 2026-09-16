@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package gameframe.protocol;
+
+option go_package = "gameframe/internal/protocol";
+
+import "notification/equipment/EquipmentChanges.proto";
+
+message Notification {
+  EquipmentChanges equipment = 1;
+}

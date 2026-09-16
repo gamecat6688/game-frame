@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package gameframe.protocol;
+
+option go_package = "gameframe/internal/protocol";
+
+import "gamestate/equipment/EquipmentState.proto";
+
+// Absolute values, not arithmetic increments: retries cannot add twice.
+message EquipmentChanges {
+  repeated EquipmentItem upsert = 1;
+  repeated int32 deleted_ids = 2 [packed = false];
+}

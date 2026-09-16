@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package gameframe.persistence;
+
+option go_package = "gameframe/internal/persistence";
+
+message HeroDbo {
+  int32 id = 1;
+  int32 level = 2;
+  int32 equipment_id = 3;
+}
+
+message HeroesDbo {
+  repeated HeroDbo heroes = 1;
+}

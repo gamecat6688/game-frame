@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package gameframe.protocol;
+
+option go_package = "gameframe/internal/protocol";
+
+// Derived time-sensitive view; the private settlement timestamp is not exposed.
+message IdleState {
+  int64 gold = 1;
+  int64 experience = 2;
+}

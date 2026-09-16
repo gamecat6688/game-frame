@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package gameframe.persistence;
+
+option go_package = "gameframe/internal/persistence";
+
+message FormationDbo {
+  repeated int32 slots = 1;
+}

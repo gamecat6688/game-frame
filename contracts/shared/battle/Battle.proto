@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package gameframe.protocol;
+
+option go_package = "gameframe/internal/protocol";
+
+message Fighter {
+  int32 id = 1;
+  int64 attack = 2;
+  int64 health = 3;
+  int64 defense = 4;
+  int32 skill_id = 5;
+}
+
+message BattleEvent {
+  string side = 1;
+  int32 actor = 2;
+  int32 target = 3;
+  int64 damage = 4;
+  int64 remaining = 5;
+  int32 skill_id = 6;
+}
+
+message Battle {
+  int32 stage = 1;
+  bool victory = 2;
+  repeated Fighter allies = 3;
+  repeated Fighter enemies = 4;
+  repeated BattleEvent events = 5;
+  int64 gold = 6;
+  int64 experience = 7;
+}

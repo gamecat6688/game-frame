@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package gameframe.protocol;
+
+option go_package = "gameframe/internal/protocol";
+
+import "gamestate/StateUpdate.proto";
+import "notification/Notification.proto";
+import "battle/Battle.proto";
+
+message GameResponse {
+  string id = 1;
+  // "ok" means success; any other nonempty value is an error code.
+  string code = 2;
+  StateUpdate update = 3;
+  repeated Notification notifications = 4;
+  Battle battle = 5;
+}

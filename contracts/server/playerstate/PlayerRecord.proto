@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package gameframe.persistence;
+
+option go_package = "gameframe/internal/persistence";
+
+import "playerstate/wallet/WalletDbo.proto";
+import "playerstate/heroes/HeroesDbo.proto";
+import "playerstate/equipment/EquipmentDbo.proto";
+import "playerstate/formation/FormationDbo.proto";
+import "playerstate/campaign/CampaignDbo.proto";
+import "playerstate/idle/IdleDbo.proto";
+import "storage/RequestReceipt.proto";
+
+message PlayerRecord {
+  int32 schema_version = 1;
+  string config_version = 2;
+  int64 revision = 3;
+  WalletDbo wallet = 10;
+  HeroesDbo heroes = 11;
+  EquipmentDbo equipment = 12;
+  FormationDbo formation = 13;
+  CampaignDbo campaign = 14;
+  IdleDbo idle = 15;
+  repeated RequestReceipt receipts = 20;
+}

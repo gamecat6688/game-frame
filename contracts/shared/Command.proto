@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package gameframe.protocol;
+
+option go_package = "gameframe/internal/protocol";
+
+// Commands contain intent only. Protocol version 2 rejects unknown fields.
+message Command {
+  int32 protocol_version = 1;
+  string id = 2;
+  string type = 3;
+  int64 expected_revision = 4;
+  int32 hero_id = 5;
+  int32 equipment_id = 6;
+  repeated int32 formation = 7 [packed = false];
+}

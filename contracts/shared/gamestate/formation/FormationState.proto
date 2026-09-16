@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package gameframe.protocol;
+
+option go_package = "gameframe/internal/protocol";
+
+message FormationState {
+  repeated int32 slots = 1 [packed = false];
+}

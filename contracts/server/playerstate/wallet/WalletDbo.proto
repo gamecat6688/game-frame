@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package gameframe.persistence;
+
+option go_package = "gameframe/internal/persistence";
+
+// Server/private persistence schema. No derived combat stats or view state.
+message WalletDbo {
+  int64 gold = 1;
+  int64 experience = 2;
+}

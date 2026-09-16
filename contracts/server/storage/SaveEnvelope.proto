@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package gameframe.persistence;
+
+option go_package = "gameframe/internal/persistence";
+
+// Checksum detects corruption, not hostile edits on a player's local device.
+message SaveEnvelope {
+  string magic = 1;
+  uint32 format_version = 2;
+  bytes payload = 3;
+  bytes sha256 = 4;
+}

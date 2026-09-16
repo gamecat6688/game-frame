@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package gameframe.protocol;
+
+option go_package = "gameframe/internal/protocol";
+
+import "gamestate/wallet/WalletState.proto";
+import "gamestate/heroes/HeroesState.proto";
+import "gamestate/equipment/EquipmentState.proto";
+import "gamestate/formation/FormationState.proto";
+import "gamestate/campaign/CampaignState.proto";
+import "gamestate/idle/IdleState.proto";
+
+message StateUpdate {
+  // All six modules present means a full snapshot. Otherwise this is a delta.
+  // Writes advance revision by one; same-revision refreshes contain only idle.
+  int64 revision = 1;
+  string config_version = 2;
+  int64 server_time = 3;
+  WalletState wallet = 4;
+  HeroesState heroes = 5;
+  EquipmentState equipment = 6;
+  FormationState formation = 7;
+  CampaignState campaign = 8;
+  IdleState idle = 9;
+}

@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package gameframe.protocol;
+
+option go_package = "gameframe/internal/protocol";
+
+message WalletState {
+  int64 gold = 1;
+  int64 experience = 2;
+}

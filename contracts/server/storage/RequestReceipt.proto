@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package gameframe.persistence;
+
+option go_package = "gameframe/internal/persistence";
+
+import "Command.proto";
+import "GameResponse.proto";
+
+message RequestReceipt {
+  gameframe.protocol.Command command = 1;
+  gameframe.protocol.GameResponse response = 2;
+}
