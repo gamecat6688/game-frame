@@ -1,0 +1,17 @@
+.godot/
+.tools/
+/build/
+/runtime/
+*.log
+*.tmp
+*.exe
+*.dll
+*.so
+*.dylib
+__pycache__/
+tools.local.json
+client/override.cfg
+.env
+.env.*
+!.env.example
+bridge/godot/extension_api.json

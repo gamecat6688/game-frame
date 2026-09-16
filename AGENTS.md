@@ -1,0 +1,21 @@
+# 项目约定
+
+- Godot 只处理输入、显示和战报播放；权威业务在 `game/internal/application`、`game/internal/domain` 中实现。
+- 本地 DLL 与服务器必须调用同一个 Go Runtime。命令只带操作意图，禁止接受客户端计算的金币、经验、胜负和挂机时长。
+- 业务消息定义在 `contracts/shared/`，私有存档定义在 `contracts/server/`；修改后运行 `tools/generate_proto.ps1`。账号验证可用 HTTP，游戏逻辑必须使用 WebSocket 长连接的 protobuf 二进制消息，禁止增加 HTTP 业务命令入口。DLL 的字符串桥仅用 JSON/Base64 包装同一份 protobuf 载荷。
+- 所有 `.proto` 文件每个字段独占一行，禁止将 message 及其字段压缩在同一行；相邻 message 定义之间保留一个空行，定义注释放在该空行之后。
+- 协议参考 idle-rpg 分层：共享入口放 `contracts/shared/`，公开状态按模块放 `shared/gamestate/`，通知放 `shared/notification/`，战报放 `shared/battle/`；私有状态按模块放 `server/playerstate/`，存储信封与回执放 `server/storage/`。禁止恢复集中式 Game.proto/Player.proto；同模块紧密相关的消息可放同一文件，通过 import 组合聚合消息。生成脚本递归发现源文件，共享协议不得依赖私有协议。
+- GameResponse 只保留 id/code/update/notifications/battle，code="ok" 为唯一成功标志。现阶段修改协议直接删除不需要的字段，不添加 reserved、旧协议适配或回执兼容迁移；同步更新客户端、DLL 和服务器。当前请求版本为 2、WebSocket 子协议 gameframe.v2、PlayerRecord schema 3。
+- WebSocket 断线重连必须复用未确认命令的完整 protobuf 和请求 ID；连接恢复后同步状态。模式切换要关闭连接、取消重连并丢弃旧会话回包。基础设施健康检查可保留 HTTP。
+- 每个业务写入必须标记受影响的模块。StateUpdate 保留 revision/config_version/server_time 和六个业务模块；六模块齐全即全量，增量只允许版本加一，同版本仅允许无通知的 Idle 刷新。装备通知使用绝对值 upsert/删除 ID；客户端发现基线缺口时获取全量状态，不能盲目 MergeFrom。
+- 玩家状态和幂等回执必须通过同一次 `saveRecord` 提交，落盘成功后才发布状态；`SaveToDB` 复用同一存储实现。默认 `.pb` 存档可迁移相邻旧 `.json` 文件，必须保留旧文件，校验失败不可静默清档。
+- `client/ui/**/*.tscn` 是界面布局唯一来源。固定页面、英雄卡、阵容槽、装备卡均在场景中声明；禁止运行时通过 `Control.new()`、`add_child()` 或列表实例化创建布局。
+- UI 固定文案与格式模板放在 `client/localization/ui.*.po`。英雄、装备、技能、关卡文案写入 Excel `i18n` 字段，经 excel2pb 的 `I18N.xlsx` 导出；页面不直接读取语言列。
+- View 只更新节点和发出语义信号；Presenter 组织展示；Service 隐藏 Excel 表和网络状态；Session 管理传输及会话生命周期。
+- Excel 前四行为字段、类型、客户端/服务端过滤、说明。变更后运行 `tools/build.ps1 -Test`；不要手改 generated 目录或 `.bytes/.data`。
+- 配置表、表结构、数值和动态多语言相关任务，先读取并使用项目内 [excel2pb-config 技能](.agents/skills/excel2pb-config/SKILL.md)，按需读取其 references；源表目录为 `table/xlsx/`。
+- 修改权威规则要运行 Go 测试；修改静态场景、语言、桥接或协议要执行 Godot smoke，并查看截图。
+- 单机与在线存档独立。单机存档绝不能直接导入正式在线经济系统。
+- 服务器 Docker 部署使用根目录 `Dockerfile` 与 `compose.yaml`，默认仅绑定本机；凭据通过 secret 文件挂载，禁止使用开发默认令牌部署。命名卷中的服务端存档必须保留，日常更新不得执行 `down --volumes`。当前文件 Store 只支持一个写入实例，禁止直接扩容副本。容器验证用 `tools/test_docker.py` 的独立项目与临时卷。
+- 当前原生桥接基线是 Windows x64 + Godot 4.7.x。其他平台需要单独构建和验证；Android 联调优先 MuMu。
+- git 提交说明使用简体中文。禁止将 `.tools/`、运行存档和开发令牌用于生产部署。
