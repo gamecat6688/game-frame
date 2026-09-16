@@ -1,0 +1,8 @@
+[configuration]
+entry_symbol = "game_bridge_init"
+compatibility_minimum = "4.7"
+reloadable = false
+
+[libraries]
+windows.debug.x86_64 = "res://addons/game_bridge/bin/game_bridge.dll"
+windows.release.x86_64 = "res://addons/game_bridge/bin/game_bridge.dll"
