@@ -1,0 +1,29 @@
+MaxProcess: 4
+TimeZone: "+08:00"
+EnableI18n: true
+ExcelDir: table/xlsx/
+ProtoImportPath: ""
+LogLevel: INFO
+Outs:
+  Client:
+    ProtoPath: contracts/generated/client/
+    PbPath: client/protobuf/generated/table/
+    DataPath: client/config/data/
+    DataExt: ".bytes"
+    PackageName: "game_data"
+    CodeLanguage: "godot"
+  Server:
+    ProtoPath: contracts/generated/server/
+    PbPath: build/tables/go/
+    DataPath: game/data/
+    DataExt: ".data"
+    PackageName: "tables"
+    GoPackagePath: "gameframe/internal/generated"
+    GoModulePath: "gameframe"
+    CodeLanguage: "golang"
+TplCodePaths:
+  godot: embedded://godot
+  golang: tools/templates/golang/
+CodeOutPaths:
+  godot: client/config/generated/
+  golang: game/internal/generatedloaders/

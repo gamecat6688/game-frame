@@ -1,0 +1,26 @@
+
+syntax = "proto3";
+package game_data;
+
+option csharp_namespace = "game_data";
+option go_package = "game_data";
+
+
+
+message HeroConfig {
+  repeated Hero Records = 1;
+}
+
+message Hero {
+  int32 ID = 1; // 英雄编号
+  string Name = 2; // 英雄名
+  string Title = 3; // 称号
+  string Faction = 4; // 阵营
+  string Role = 5; // 职业
+  string Description = 6; // 英雄介绍
+  int32 Attack = 7; // 基础攻击
+  int32 Health = 8; // 基础生命
+  int32 Defense = 9; // 基础防御
+  int32 SkillID = 10; // 技能
+  string PortraitColor = 11; // 展示色
+}

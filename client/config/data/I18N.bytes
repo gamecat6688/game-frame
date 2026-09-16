@@ -1,0 +1,138 @@
+
+�
+Equipment_Description_101$踏上旅途时最可靠的伙伴。$踏上旅途時最可靠的夥伴。"*A dependable companion for the road ahead.
+�
+Equipment_Description_102'铭刻誓言的旧剑，依然锋利。'銘刻誓言的舊劍，依然鋒利。")An old blade, its oath and edge unbroken.
+�-星光凝于锋刃，等待真正的勇者。-星光凝於鋒刃，等待真正的勇者。"5Starlight sleeps in its edge, awaiting a worthy hero.
+Equipment_Description_103
+B
+Equipment_Name_101旅人长剑旅人長劍"Traveler's Blade
+<
+Equipment_Name_102守誓之刃守誓之刃"
+Oathkeeper
+:
+Equipment_Name_103星陨圣剑星隕聖劍"Starfall
+�
+Hero_Description_1*将最后一道曙光守在剑锋之上。*將最後一道曙光守在劍鋒之上。"1He carries the last light of dawn upon his blade.
+�"5Guided by starlight, her arrows never lose their way.
+Hero_Description_2*循着星光，箭矢从不迷失方向。*循著星光，箭矢從不迷失方向。
+�*古老的冰晶记载着世界的回声。*古老的冰晶記載著世界的迴聲。".Ancient ice remembers the echoes of the world.
+Hero_Description_3
+�'以坚盾守护每一个同行之人。'以堅盾守護每一個同行之人。"+Her shield is a promise to every companion.
+Hero_Description_4
+�
+Hero_Description_5-风与枝叶低语，回应远征的呼唤。-風與枝葉低語，回應遠征的呼喚。"2Leaves and wind answer the call of the expedition.
+�-無聲穿過迷霧，追尋失落的誓言。"3He crosses the mist in pursuit of a forgotten oath.
+Hero_Description_6-无声穿过迷雾，追寻失落的誓言。
+-
+Hero_Faction_1耀光耀光"Lightbearer
+*
+Hero_Faction_2绿裔綠裔"Wildborn
++
+Hero_Faction_3星辉星輝"	Celestial
+-"Lightbearer
+Hero_Faction_4耀光耀光
+*
+Hero_Faction_5绿裔綠裔"Wildborn
+*
+Hero_Faction_6暮影暮影"Duskborn
+#
+Hero_Name_1莱昂萊昂"Leon
+#
+Hero_Name_2艾琳艾琳"Eryn
+#
+Hero_Name_3露米露米"Lumi
+#
+Hero_Name_4瑟拉瑟拉"Sera
+%
+Hero_Name_5薇洛薇洛"Willow
+(
+Hero_Name_6	诺克斯	諾克斯"Nox
+&
+Hero_Role_1战士戰士"Warrior
+%
+Hero_Role_2游侠遊俠"Ranger
+#
+Hero_Role_3法师法師"Mage
+#
+Hero_Role_4坦克坦克"Tank
+#法師"Mage
+Hero_Role_5法师
+'刺客刺客"Assassin
+Hero_Role_6
+7"Dawn Warden
+Hero_Title_1晨曦守望晨曦守望
+7
+Hero_Title_2逐星游侠逐星遊俠"Star Ranger
+6"
+Frost Sage
+Hero_Title_3霜月贤者霜月賢者
+:
+Hero_Title_4圣辉骑士聖輝騎士"Radiant Knight
+8
+Hero_Title_5森语使者森語使者"Grove Herald
+7暮色行者"Dusk Walker
+Hero_Title_6暮色行者
+v挥剑攻击前方敌人。揮劍攻擊前方敵人。"%Strike an enemy with a blade of dawn.
+Skill_Description_1
+{射出貫穿黑暗的箭矢。"$Loose an arrow through the darkness.
+Skill_Description_2射出贯穿黑暗的箭矢。
+{
+Skill_Description_3凝聚寒霜，重击敌人。凝聚寒霜，重擊敵人。"$Gather frost into a powerful strike.
+p
+Skill_Description_4以圣光击退敌人。以聖光擊退敵人。"%Drive enemies back with sacred light.
+荊棘之力集中於一擊。"(Channel the forest into a piercing blow.
+Skill_Description_5荆棘之力集中于一击。
+�!從陰影中發起迅捷一擊。"(Deliver a swift strike from the shadows.
+Skill_Description_6!从阴影中发起迅捷一击。
+0	破曉斬"
+Dawn Slash
+Skill_Name_1	破晓斩
+1	星火箭"Ember Arrow
+Skill_Name_2	星火箭
+6霜之回响霜之迴響"
+Frost Echo
+Skill_Name_3
+9
+Skill_Name_4圣光裁决聖光裁決"Light Verdict
+8
+Skill_Name_5荆棘突刺荊棘突刺"Thorn Pierce
+0
+Skill_Name_6	暮影刃	暮影刃"
+Dusk Blade
+�
+Stage_Description_1*清除迷雾中的敌人，继续远征。*清除迷霧中的敵人，繼續遠征。":Clear the path through the mist and continue your journey.
+�":Clear the path through the mist and continue your journey.
+Stage_Description_2*清除迷雾中的敌人，继续远征。*清除迷霧中的敵人，繼續遠征。
+�
+Stage_Description_3*清除迷雾中的敌人，继续远征。*清除迷霧中的敵人，繼續遠征。":Clear the path through the mist and continue your journey.
+�":Clear the path through the mist and continue your journey.
+Stage_Description_4*清除迷雾中的敌人，继续远征。*清除迷霧中的敵人，繼續遠征。
+�
+Stage_Description_5*清除迷雾中的敌人，继续远征。*清除迷霧中的敵人，繼續遠征。":Clear the path through the mist and continue your journey.
+�*清除迷雾中的敌人，继续远征。*清除迷霧中的敵人，繼續遠征。":Clear the path through the mist and continue your journey.
+Stage_Description_6
+>
+Stage_EnemyName_1迷雾守卫迷霧守衛"Mist Sentinel
+>
+Stage_EnemyName_2迷雾守卫迷霧守衛"Mist Sentinel
+>
+Stage_EnemyName_3迷雾守卫迷霧守衛"Mist Sentinel
+>迷霧守衛"Mist Sentinel
+Stage_EnemyName_4迷雾守卫
+>
+Stage_EnemyName_5迷雾守卫迷霧守衛"Mist Sentinel
+>
+Stage_EnemyName_6迷雾守卫迷霧守衛"Mist Sentinel
+4薄霧林地"Mistwood
+Stage_Name_1薄雾林地
+8
+Stage_Name_2失落哨站失落哨站"Lost Outpost
+:
+Stage_Name_3月影古桥月影古橋"Moonlit Bridge
+7
+Stage_Name_4回声峡谷迴聲峽谷"Echo Canyon
+:
+Stage_Name_5沉眠遗迹沉眠遺跡"Sleeping Ruins
+8"Citadel Gate
+Stage_Name_6王城之门王城之門

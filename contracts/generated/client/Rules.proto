@@ -1,0 +1,28 @@
+
+syntax = "proto3";
+package game_data;
+
+option csharp_namespace = "game_data";
+option go_package = "game_data";
+
+
+
+message RulesConfig {
+  repeated Rules Records = 1;
+}
+
+message Rules {
+  int32 ID = 1; // 规则编号
+  string Version = 2; // 配置版本
+  int32 InitialGold = 3; // 初始金币
+  int32 InitialExperience = 4; // 初始经验
+  int32 LevelGold = 5; // 升级金币系数
+  int32 LevelExperience = 6; // 升级经验系数
+  int32 MaxLevel = 7; // 最高等级
+  int32 IdleGoldPerMinute = 8; // 基础挂机金币每分钟
+  int32 IdleExperiencePerMinute = 9; // 基础挂机经验每分钟
+  int32 IdleCapSeconds = 10; // 挂机上限秒
+  int32 AttackPerLevel = 11; // 每级攻击成长
+  int32 HealthPerLevel = 12; // 每级生命成长
+  int32 DefensePerLevel = 13; // 每级防御成长
+}

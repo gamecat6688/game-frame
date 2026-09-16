@@ -1,0 +1,84 @@
+---
+name: excel2pb-config
+description: 设计、修改、清理和校验 excel2pb 游戏配置 Excel 表。当任务涉及 table/xlsx 下的 .xlsx、表头与样式、protobuf 结构、游戏数值、多语言文本，或 pk、unique、fk、index、i18n、时间戳、枚举及客户端/服务器过滤时使用。
+---
+
+# excel2pb 配置表
+
+excel2pb 将 `table/xlsx/` 工作簿导出为 protobuf 二进制和读取代码。先理解表结构和约束，再改数据；这样可在导出前发现会导致 panic 或产生错误数据的问题。
+
+正式构建的 excel2pb 可执行文件内置各语言代码模板。只分发可执行文件时，将 `TplCodePaths.<语言>` 配置为 `embedded://<语言>`；例如 Godot 使用 `embedded://godot`，不需要复制 `assets/template/` 源文件。
+
+## 按任务加载资料
+
+### 当前项目接入约定
+
+- 项目命令从仓库根目录运行。源表位于 `table/xlsx/`，导出配置为 `table/excel2pb.yaml`。
+- 使用 `./tools/generate.ps1` 导出。最后一次导出后运行 `python .agents/skills/excel2pb-config/scripts/format_workbooks.py table/xlsx` 整理格式。构建使用的 `tools/format_workbooks.py` 当前与技能脚本相同；修改格式化器时保持两份同步。
+- 玩法配置变更后执行 `./tools/build.ps1 -Test`。Go 将 `.data` 嵌入 DLL 和服务器，单独导表不会更新正在运行的玩法逻辑。工具路径来自 git 忽略的 `tools.local.json`，不要硬编码其他仓库的绝对路径。
+- Godot 使用 `embedded://godot`；Go 有意使用 `tools/templates/golang/` 生成本项目的 Catalog 读取器，保留这一覆盖设置。当前 Go 读取器使用单主键；采用复合主键或新增查询能力前，先检查并扩展模板。
+- Go protobuf 暂存于 `build/tables/go/`，然后复制到 `game/internal/generated/`。复制步骤不会清理失效文件；删除或重命名表时，显式检查并清理对应旧副本和消费代码。
+- 动态玩法文案使用业务表的 `i18n` 字段与 `table/xlsx/I18N.xlsx`：`Cn` 对应 `zh_CN`，`Tn` 对应 `zh_TW`，`En` 对应 `en`。固定 UI 文案和数值格式模板仍放在 `client/localization/ui.*.po`。完整流程见 `docs/表格与多语言.md`。
+- 字段名必须兼容生成的 GDScript，例如使用 `PortraitColor` 避免内置类型名 `Color`。英雄、装备展示槽位为静态 `.tscn` 节点，新增记录不能引入运行时动态创建的 UI 布局。
+
+### 任务相关参考资料
+
+- 需要用代码读取、修改或创建 `.xlsx`，尤其是读写字段批注时，先读 [references/openpyxl.zh-CN.md](references/openpyxl.zh-CN.md)。只能用支持批注的库；不要用 pandas 写回工作簿。
+- 文字被截断，或大范围字段、内容调整导致文本长度变化时，运行 `scripts/format_workbooks.py <工作簿或目录>`，再检查列宽、自动换行与行高。该脚本应在最后一次 excel2pb 导出后运行，因为 i18n 合并可能重新生成 `I18N.xlsx` 并重置列宽或行高。
+- 新增表或字段时，使用“表结构”“类型”“批注”规则。
+- 填多语言、数组或嵌套结构时，使用对应规则。
+- 在导出前检查时，逐项执行“校验清单”，报告工作簿、sheet、字段和 Excel 行号（普通数据行号 = 数据下标 + 5；枚举值行号 = 枚举值下标 + 2）。
+
+## 表结构
+
+- 工作簿是 sheet 的容器，可放在 `table/xlsx/` 任意层级子目录；`~` 开头的临时工作簿会跳过。
+- 玩法和配置工作簿使用中文名称，不使用 `Data` 等实现后缀，例如 `登录.xlsx`、`玩家资料.xlsx`、`本地化设置.xlsx`。`I18N.xlsx` 是唯一例外：excel2pb 以该固定文件名识别并重新生成多语言工作簿。
+- 即使工作簿文件名使用中文，参与导出的 sheet 名仍应使用简洁、合法的技术标识符。配置描述功能领域而不是多个界面变体时，优先使用领域或功能名称，避免展示层和实现后缀：使用 `Login`、`World`、`AcquisitionGuide`、`MaterialSource`，而不是 `LoginViewData`、`WorldView`、`GuideView`、`SourceModal`。excel2pb 根据 sheet 名生成 message、proto、数据文件和读取代码，因此重命名时必须同时迁移生成文件、模型查询、i18n 键和代码引用；中文显示名称应放在工作簿文件名，而不应写入导出的 sheet 标签。
+- 非枚举 sheet 名决定导出的 message、proto 和数据文件名，需为合法标识符（字母开头，后续为字母、数字或下划线）。`#` 开头的 sheet 是草稿或备注，不导出。
+- 以 `<EnumName>_Enum` 命名的 sheet 是枚举表；其他 sheet 是数据 message。枚举表只有第 1 行是功能表头行，枚举值从第 2 行开始。
+- 数据表前四行固定且不可错位：第 1 行字段名，第 2 行类型，第 3 行过滤（`c`、`s`、`cs`），第 4 行说明；数据从第 5 行开始。
+- 修改现有表时保留颜色、边框和冻结窗格；原列宽能完整显示内容时予以保留，否则按内容自适应列宽：中日韩全角字符按宽字符计算，增加适当留白，并限制长文本列的最大宽度，超过上限时自动换行，避免表格过宽。普通数据表的第 1–4 行是功能表头行，全部水平、垂直居中，第 4 行说明文字开启自动换行；枚举表仅第 1 行是功能表头行并居中。所有值行都使用 Excel 默认水平、垂直对齐：普通表从第 5 行起，枚举表从第 2 行起；不得批量居中，以保留数字、文本和布尔值的原生可读对齐。长文本换行后相应增加行高。
+
+## 类型与主键
+
+基础类型为 `int32`、`int64`、`float`、`double`、`bool`、`string`、`timestamp`、`i18n`，以及已定义的枚举名或其他 sheet 名（嵌套 message）。类型单元格可加：
+
+- `pk int32`：主键；每张需要生成读取代码的数据表都应有主键。
+- `unique string`：此列值唯一。
+- `repeated Reward`：数组。
+
+多个 `pk` 是复合主键：每一列可以重复，但整组值必须唯一。主键的每个分量都不可为空；第 3 行必须覆盖 `Outs` 中实际配置的全部导出端。仅配置 Client 时可以使用 `c` 或 `cs`，同时配置 Client 和 Server 时必须使用 `cs`。
+
+`timestamp` 填 `YYYY-MM-DD HH:MM:SS`，会按配置的 `TimeZone` 导出 Unix 秒。整数、浮点和布尔值必须能严格解析，不能依赖默认零值。枚举字段可填枚举名称或 32 位整数；枚举表不能为空，第一项必须为 `0`，名称和值均不可重复，例如 `InvalidItemType = 0`。
+
+## 批注 tag
+
+只读取**第 1 行字段名单元格**的批注。多个 tag 以 `;` 分隔：
+
+- `fk:Item.ID`：本字段每个值都必须存在于 `Item` sheet 的 `ID` 字段；`repeated` 数组逐项验证。
+- `fk:Reward.ItemID=Item.ID`：验证嵌套 `Reward` 内的 `ItemID`。
+- `index`：声明索引；可与外键组合，例如 `fk:Item.ID;index;`。
+
+批注只保留实际 tag。Excel/WPS 为旧式 threaded comment 生成的兼容提示文字不是 tag；编辑时应删除提示包装，保留确有必要的 `fk:...`、`index` 等内容。
+
+## i18n 与复杂值
+
+- 要翻译的字段第 2 行写 `i18n`，数据中填写源文本而不是 key。导出会合并到 `table/xlsx/I18N.xlsx`，并将 `Sheet_Field_主键值` 写入二进制。
+- 含 i18n 字段的表必须有稳定的主键；不要把 i18n 字段本身设为主键。复合主键以 `_` 连接。
+- `repeated` 值用 `;` 分隔，例如 `1;2;3`。
+- 嵌套值内部字段按目标 sheet 列顺序使用 `|` 分隔，多项使用 `;`，例如 `1001|2;1002|5`。
+- 嵌套值仍按完整 sheet 列顺序填写；导出时会依据嵌套字段自己的 `c`、`s`、`cs` 过滤目标端字段，不要为客户端和服务器改变值的列顺序。
+
+## 导出前校验清单
+
+先报告会中断导出的硬错误，再报告会让数据失真的问题：
+
+1. 每张数据表有主键，主键分量非空，且主键或复合主键组合不重复；`unique` 列没有重复值。
+2. 类型可严格解析：整数不溢出，浮点、布尔值、时间戳格式正确；枚举名/整数合法；引用的枚举和嵌套类型存在。
+3. 含 i18n 的表有主键；主键不会被目标端过滤掉。
+4. 每个 `fk` 指向存在的 sheet 和字段，且每条值（含数组、嵌套项）都可在目标列找到。
+5. 嵌套值用 `|` 拆出的字段数与目标 sheet 一致。
+6. 数据表四行表头正确；第 1–4 行功能表头全部水平、垂直居中；第 5 行起的数据单元格使用 Excel 默认水平、垂直对齐而不是居中；第 4 行自动换行；普通字段名与数值不会因列宽不足被截断；受最大列宽限制的长文本已换行并有足够行高；字段与 sheet 名合法；数据始于第 5 行。
+7. 枚举 sheet 符合 `<名称>_Enum`；仅第 1 行作为功能表头并居中；第 2 行起使用 Excel 默认水平、垂直对齐；枚举非空、首项值为 `0`，且名称和值没有重复。
+
+对每个问题说明：工作簿、sheet、字段、Excel 行号、违反的规则和可执行的修复方式。修改后运行与改动范围相符的检查。完整导出前确认目标语言的 Loader 和 Module 模板均存在，并检查 `protoc`、插件及实际非空输出；任一 worker、模板或 `protoc` 失败都应视为导出失败。成功导出会清理生成目录中已失效的受管文件，不要把手写同扩展名文件放进 `ProtoPath`、`PbPath`、`DataPath` 或 `CodeOutPaths`。

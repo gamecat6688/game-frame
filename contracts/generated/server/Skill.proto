@@ -1,0 +1,20 @@
+
+syntax = "proto3";
+package tables;
+
+option csharp_namespace = "tables";
+option go_package = "gameframe/internal/generated";
+
+
+
+message SkillConfig {
+  repeated Skill Records = 1;
+}
+
+message Skill {
+  int32 ID = 1; // 技能编号
+  string Name = 2; // 技能名称
+  string Description = 3; // 技能说明
+  int32 Multiplier = 4; // 技能伤害百分比
+  int32 Every = 5; // 每几次行动释放
+}

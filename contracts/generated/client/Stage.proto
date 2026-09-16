@@ -1,0 +1,24 @@
+
+syntax = "proto3";
+package game_data;
+
+option csharp_namespace = "game_data";
+option go_package = "game_data";
+
+
+
+message StageConfig {
+  repeated Stage Records = 1;
+}
+
+message Stage {
+  int32 ID = 1; // 关卡编号
+  string Name = 2; // 关卡名
+  string Description = 3; // 关卡描述
+  string EnemyName = 4; // 敌人名
+  int32 EnemyAttack = 5; // 敌人攻击
+  int32 EnemyHealth = 6; // 敌人生命
+  int32 EnemyDefense = 7; // 敌人防御
+  int32 Gold = 8; // 首通金币
+  int32 Experience = 9; // 首通经验
+}

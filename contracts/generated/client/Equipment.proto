@@ -1,0 +1,21 @@
+
+syntax = "proto3";
+package game_data;
+
+option csharp_namespace = "game_data";
+option go_package = "game_data";
+
+
+
+message EquipmentConfig {
+  repeated Equipment Records = 1;
+}
+
+message Equipment {
+  int32 ID = 1; // 装备编号
+  string Name = 2; // 装备名称
+  string Description = 3; // 装备说明
+  int32 Attack = 4; // 攻击加成
+  int32 Health = 5; // 生命加成
+  int32 RequiredLevel = 6; // 穿戴等级
+}
