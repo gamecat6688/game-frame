@@ -1,42 +1,66 @@
 {
   "schema_version": 1,
-  "page": "main",
-  "design_size": [
-    720,
-    1120
-  ],
+  "design_size": [720, 1120],
+  "scene_name": "CurrenciesPreview",
+  "theme": "ui/theme.tres",
   "root": {
     "id": "currencies",
+    "name": "Currencies",
     "node_type": "PanelContainer",
     "existing_path": "View/Margin/Main/Currencies",
-    "rect": [
-      24,
-      170,
-      672,
-      64
-    ],
+    "rect": [24, 151, 672, 61],
     "layout_policy": "container",
     "background": "panel_currency_bg",
     "children": [
       {
-        "id": "gold_label",
-        "existing_name": "GoldLabel",
-        "text_key": "UI_GOLD"
-      },
-      {
-        "id": "gold_value",
-        "existing_name": "Gold",
-        "binding": "AdventureView.render:data.gold"
-      },
-      {
-        "id": "xp_label",
-        "existing_name": "XPLabel",
-        "text_key": "UI_EXPERIENCE"
-      },
-      {
-        "id": "xp_value",
-        "existing_name": "XP",
-        "binding": "AdventureView.render:data.xp"
+        "id": "row",
+        "name": "Row",
+        "node_type": "HBoxContainer",
+        "layout_policy": "container",
+        "children": [
+          {
+            "id": "gold_label",
+            "name": "GoldLabel",
+            "node_type": "Label",
+            "layout_policy": "container",
+            "unique_name": true,
+            "text_key": "UI_GOLD",
+            "font_size": 17,
+            "font_color": [0.85, 0.72, 0.43, 1]
+          },
+          {
+            "id": "gold_value",
+            "name": "Gold",
+            "node_type": "Label",
+            "layout_policy": "container",
+            "unique_name": true,
+            "preview_text": "12,345",
+            "binding": "AdventureView.render:data.gold",
+            "font_size": 24,
+            "expand": true
+          },
+          {
+            "id": "xp_label",
+            "name": "XPLabel",
+            "node_type": "Label",
+            "layout_policy": "container",
+            "unique_name": true,
+            "text_key": "UI_EXPERIENCE",
+            "font_size": 17,
+            "font_color": [0.62, 0.77, 0.69, 1]
+          },
+          {
+            "id": "xp_value",
+            "name": "XP",
+            "node_type": "Label",
+            "layout_policy": "container",
+            "unique_name": true,
+            "preview_text": "678",
+            "binding": "AdventureView.render:data.xp",
+            "font_size": 24,
+            "expand": true
+          }
+        ]
       }
     ]
   }

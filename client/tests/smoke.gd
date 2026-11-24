@@ -28,6 +28,12 @@ func _controls(node: Node) -> int:
 	for child in node.get_children(): count += _controls(child)
 	return count
 
+func _check_currencies(context: String) -> void:
+	var state: Dictionary = _app.session.snapshot
+	_check(state.has("gold") and state.has("experience"), context + " wallet snapshot missing")
+	_check(_app.get_node("%Gold").text == str(int(state.get("gold", -1))), context + " gold binding mismatch")
+	_check(_app.get_node("%XP").text == str(int(state.get("experience", -1))), context + " experience binding mismatch")
+
 func _run() -> void:
 	ProjectSettings.set_setting("game/backend", "local")
 	# This smoke connects to its isolated test server, not the local Docker save.
@@ -44,6 +50,7 @@ func _run() -> void:
 		quit(1)
 		return
 	_check(_app.session.snapshot.heroes.size() == 6, "six owned heroes expected")
+	_check_currencies("offline startup")
 	var original_controls := _controls(_app)
 	var stage_label: Label = _app.get_node("%StageTitle")
 	_check(stage_label.text.contains("薄雾林地"), "excel2pb Chinese content missing")
@@ -61,6 +68,7 @@ func _run() -> void:
 	_app.get_node("%LevelUp").pressed.emit()
 	await _settle()
 	_check(int(_app.session.snapshot.heroes[4].level) == 2, "training must be authoritative")
+	_check_currencies("offline after training")
 	await _capture("heroes-zh")
 	_app.get_node("%Tab3").pressed.emit()
 	_app.get_node("%Equip101").pressed.emit()
@@ -107,6 +115,7 @@ func _run() -> void:
 		_app.get_node("%ModeSwitch").pressed.emit()
 		await _settle()
 		_check(_app.session.mode == "remote" and not _app.session.snapshot.is_empty(), "remote snapshot failed")
+		_check_currencies("online startup")
 		var backend: RemoteBackend = _app.session._remote
 		var peer: WebSocketPeer = backend._peer
 		_app.session.send("snapshot")
@@ -146,6 +155,7 @@ func _run() -> void:
 		_app.get_node("%ModeSwitch").pressed.emit()
 		await _settle()
 		_check(int(_app.session.snapshot.revision) == offline_revision, "switching modes contaminated offline save")
+		_check_currencies("returned offline")
 	print("UI_SMOKE: %d failures; %d static controls; locales + training + gear + formation + battle + WebSocket reconnect/replay verified" % [_failures, original_controls])
 	_app.queue_free()
 	await process_frame

@@ -1,0 +1,26 @@
+{
+  "canvas_size": [
+    720,
+    1120
+  ],
+  "roi": [
+    24,
+    151,
+    672,
+    61
+  ],
+  "channels": "RGBA",
+  "pixel_count": 40992,
+  "changed_pixels": 0,
+  "pixels_above_threshold": 0,
+  "max_channel_delta": 0,
+  "mae": 0.0,
+  "alpha_mae": 0.0,
+  "diff_ratio": 0.0,
+  "threshold": 0,
+  "limits": {
+    "mae": 0,
+    "diff_ratio": 0
+  },
+  "status": "pass"
+}
