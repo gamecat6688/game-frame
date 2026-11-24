@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "page": "main",
+  "design_size": [
+    720,
+    1120
+  ],
+  "root": {
+    "id": "currencies",
+    "node_type": "PanelContainer",
+    "existing_path": "View/Margin/Main/Currencies",
+    "rect": [
+      24,
+      170,
+      672,
+      64
+    ],
+    "layout_policy": "container",
+    "background": "panel_currency_bg",
+    "children": [
+      {
+        "id": "gold_label",
+        "existing_name": "GoldLabel",
+        "text_key": "UI_GOLD"
+      },
+      {
+        "id": "gold_value",
+        "existing_name": "Gold",
+        "binding": "AdventureView.render:data.gold"
+      },
+      {
+        "id": "xp_label",
+        "existing_name": "XPLabel",
+        "text_key": "UI_EXPERIENCE"
+      },
+      {
+        "id": "xp_value",
+        "existing_name": "XP",
+        "binding": "AdventureView.render:data.xp"
+      }
+    ]
+  }
+}
