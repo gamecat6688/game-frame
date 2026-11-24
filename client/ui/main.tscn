@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3]
+[gd_scene load_steps=10 format=3]
 [ext_resource type="Script" path="res://scripts/bootstrap.gd" id="Boot"]
 [ext_resource type="Script" path="res://ui/adventure_view.gd" id="View"]
 [ext_resource type="Script" path="res://scripts/transport/game_session.gd" id="Session"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" path="res://ui/components/actor.tscn" id="Actor"]
 [ext_resource type="PackedScene" path="res://ui/components/hero_card.tscn" id="Hero"]
 [ext_resource type="Texture2D" path="res://assets/hero_1.svg" id="Portrait"]
+[ext_resource type="StyleBox" path="res://ui/components/currencies_restore/panel_currency_bg.tres" id="CurrencySkin"]
 [node name="EmberExpedition" type="Node"]
 script=ExtResource("Boot")
 [node name="Session" type="Node" parent="."]
@@ -95,6 +96,7 @@ theme_override_font_sizes/font_size=16
 
 [node name="Currencies" type="PanelContainer" parent="View/Margin/Main"]
 layout_mode=2
+theme_override_styles/panel=ExtResource("CurrencySkin")
 
 
 [node name="Row" type="HBoxContainer" parent="View/Margin/Main/Currencies"]

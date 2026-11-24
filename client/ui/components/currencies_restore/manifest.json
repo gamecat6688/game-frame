@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "design_size": [
+    720,
+    1120
+  ],
+  "assets": [
+    {
+      "id": "panel_currency_bg",
+      "file": "panel_currency_bg.png",
+      "type": "nine_slice",
+      "size": [
+        64,
+        64
+      ],
+      "source_image": "existing_theme_currencies_layer.png",
+      "source_sha256": "e98a51e5990dc4bf0d4f8f21aaed0f2f4e29f523e13f9e27bf7e69743f89cc42",
+      "source_kind": "isolated",
+      "source_rect": [
+        24,
+        151,
+        64,
+        64
+      ],
+      "origin": [
+        24,
+        151
+      ],
+      "content_rect": [
+        0,
+        0,
+        64,
+        64
+      ],
+      "trimmed": false,
+      "alpha": "straight",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "sha256": "bd563262399e654865b6c8cbe68163ca3ddf6df4938c58133fb7249c4b5458b6"
+    }
+  ]
+}

@@ -1,0 +1,189 @@
+{
+  "cases": [
+    {
+      "rectangles": {
+        "Gold": [
+          89,
+          165,
+          253,
+          33
+        ],
+        "GoldLabel": [
+          40,
+          170,
+          39,
+          23
+        ],
+        "XP": [
+          426,
+          165,
+          254,
+          33
+        ],
+        "XPLabel": [
+          352,
+          170,
+          64,
+          23
+        ],
+        "panel": [
+          24,
+          151,
+          672,
+          61
+        ],
+        "row": [
+          40,
+          165,
+          640,
+          33
+        ]
+      },
+      "roi": [
+        24,
+        151,
+        672,
+        61
+      ],
+      "viewport": [
+        720,
+        1120
+      ],
+      "comparison": {
+        "canvas_size": [
+          720,
+          1120
+        ],
+        "roi": [
+          24,
+          151,
+          672,
+          61
+        ],
+        "channels": "RGBA",
+        "pixel_count": 40992,
+        "changed_pixels": 1450,
+        "pixels_above_threshold": 0,
+        "max_channel_delta": 1,
+        "mae": 0.00942867,
+        "alpha_mae": 0.0,
+        "diff_ratio": 0.0,
+        "threshold": 8,
+        "limits": {
+          "mae": 3,
+          "diff_ratio": 0.01
+        },
+        "status": "pass"
+      }
+    },
+    {
+      "rectangles": {
+        "Gold": [
+          89,
+          165,
+          193,
+          33
+        ],
+        "GoldLabel": [
+          40,
+          170,
+          39,
+          23
+        ],
+        "XP": [
+          366,
+          165,
+          194,
+          33
+        ],
+        "XPLabel": [
+          292,
+          170,
+          64,
+          23
+        ],
+        "panel": [
+          24,
+          151,
+          552,
+          61
+        ],
+        "row": [
+          40,
+          165,
+          520,
+          33
+        ]
+      },
+      "roi": [
+        24,
+        151,
+        552,
+        61
+      ],
+      "viewport": [
+        600,
+        1120
+      ],
+      "comparison": {
+        "canvas_size": [
+          600,
+          1120
+        ],
+        "roi": [
+          24,
+          151,
+          552,
+          61
+        ],
+        "channels": "RGBA",
+        "pixel_count": 33672,
+        "changed_pixels": 1210,
+        "pixels_above_threshold": 0,
+        "max_channel_delta": 1,
+        "mae": 0.00969648,
+        "alpha_mae": 0.0,
+        "diff_ratio": 0.0,
+        "threshold": 8,
+        "limits": {
+          "mae": 3,
+          "diff_ratio": 0.01
+        },
+        "status": "pass"
+      }
+    }
+  ],
+  "godot": "4.7.1-stable (official)",
+  "gold": "12,345",
+  "locale": "en",
+  "renderer": "gl_compatibility",
+  "style_reference": "inherited StyleBoxFlat from theme.tres",
+  "xp": "678",
+  "preview_comparison": {
+    "canvas_size": [
+      720,
+      1120
+    ],
+    "roi": [
+      24,
+      151,
+      672,
+      61
+    ],
+    "channels": "RGBA",
+    "pixel_count": 40992,
+    "changed_pixels": 0,
+    "pixels_above_threshold": 0,
+    "max_channel_delta": 0,
+    "mae": 0.0,
+    "alpha_mae": 0.0,
+    "diff_ratio": 0.0,
+    "threshold": 0,
+    "limits": {
+      "mae": 0,
+      "diff_ratio": 0
+    },
+    "status": "pass"
+  },
+  "status": "pass"
+}
